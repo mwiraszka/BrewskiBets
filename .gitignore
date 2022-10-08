@@ -11,6 +11,15 @@
 npm-debug.log
 yarn-error.log
 
+# Beautify
+.jsbeautifyrc
+
+# Work in progress
+/wip
+
+# Angular and Babel Webpack
+/.angular
+
 # IDEs and editors
 .idea/
 .project
