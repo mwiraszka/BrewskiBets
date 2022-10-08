@@ -7,7 +7,7 @@ phases:
       - echo "Installing dependencies..."
       - npm install -g @angular/cli@14.2.4
       - npm install
-  test:
+  pre_build:
     commands:
       - echo "Running Jest tests..."
       - npm test
