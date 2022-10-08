@@ -33,9 +33,10 @@ Brewski Bets is the official platform for betting brewskis for the FIFA World Cu
 
 **Released on October 8th, 2022**
 
-<h4 style="color: orange">TBD</h4>
+<h4 style="color: orange">Chores</h4>
 
-- [TBD] TBD
+- [Frontend] Configure Jest, remove Jasmine & Karma from project, and update buildspec.yml to include testing phase
+- [Backend] Configure S3 buckets, Route 53 and CloudFront for automatically re-directing to https:// site
 
 </details>
 
