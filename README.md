@@ -29,11 +29,22 @@ Brewski Bets is the official platform for betting brewskis for the FIFA World Cu
 <h2>Releases</h2>
 
 <details>
+<summary style="cursor: pointer">v0.2.0-alpha</summary>
+
+**Released on October 8th, 2022**
+
+<h4 style="color: orange">Chores</h4>
+
+- [Chore] Set up code formatters, update .gitignore, add buildspec.yml, and prep project for CodeBuild CI/CD pipeline
+
+</details>
+
+<details>
 <summary style="cursor: pointer">v0.1.0-alpha</summary>
 
 **Released on October 2nd, 2022**
 
-<h4 style="color: orange">Refactor / Chores</h4>
+<h4 style="color: green">Features</h4>
 
 - [Core] Initial commit - create Angular app shell and README
 
@@ -43,6 +54,6 @@ Brewski Bets is the official platform for betting brewskis for the FIFA World Cu
 <br />
 <h2>Mock-ups</h2>
 
-![Main](/mock-ups/main.png "Main")
+![Main](/mock-ups/main.png 'Main')
 
-![Dialog overlay](/mock-ups/dialog-overlay.png "Dialog overlay")
+![Dialog overlay](/mock-ups/dialog-overlay.png 'Dialog overlay')
