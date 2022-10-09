@@ -33,9 +33,9 @@ Brewski Bets is the official platform for betting brewskis for the FIFA World Cu
 
 **Released on October 8th, 2022**
 
-<h4 style="color: orange">TBD</h4>
+<h4 style="color: green">Features</h4>
 
-- [TBD] TBD
+- [Core] Create logo and generate accompanying favicons and webmanifest file
 
 </details>
 
