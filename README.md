@@ -11,6 +11,23 @@ Brewski Bets is the official platform for betting brewskis for the FIFA World Cu
 <h2>Releases</h2>
 
 <details>
+<summary style="cursor: pointer">v0.5.0-alpha</summary>
+
+**Released on October 9th, 2022**
+
+<h4 style="color: green">Features</h4>
+
+- [Core] TBD
+- [Frontend] TBD
+
+<h4 style="color: orange">Chores/ Tests</h4>
+
+- [Core] TBD
+- [Frontend] TBD
+
+</details>
+
+<details>
 <summary style="cursor: pointer">v0.4.0-alpha</summary>
 
 **Released on October 8th, 2022**
@@ -21,7 +38,7 @@ Brewski Bets is the official platform for betting brewskis for the FIFA World Cu
 - [Frontend] Update global font family to 'Verdana' with sans-serif as fallback
 - [Frontend] Generate all frontend components and build out `footer` component with same information/layout as in previous apps
 
-<h4 style="color: orange">Chores/ Testing</h4>
+<h4 style="color: orange">Chores/ Tests</h4>
 
 - [Core] Reorganize this README.md and mock-ups
 - [Core] Configure Jest as testing platform, write a few placeholder tests for `Footer` component, and test the ESLint linter with current CI pipeline
