@@ -36,6 +36,8 @@ Brewski Bets is the official platform for betting brewskis for the FIFA World Cu
 <h4 style="color: green">Features</h4>
 
 - [Core] Create logo and generate accompanying favicons and webmanifest file
+- [Frontend] Update global font family to 'Verdana' with sans-serif as fallback
+- [Frontend] Add 'noscript' message for any users on ancient machines
 
 </details>
 
