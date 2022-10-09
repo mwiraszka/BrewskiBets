@@ -2,22 +2,22 @@
   display: flex;
   flex-flow: column nowrap;
   text-align: center;
-  padding: 30px 0;
+  padding: 20px 0;
   white-space: nowrap;
   gap: 6px;
+  font-size: 11px;
 }
 
 small {
-  font-size: 12px;
+  font-size: inherit;
 }
 
 address {
-  font-size: 11px;
   text-decoration: none;
 
   p {
     display: inline;
-    margin-right: 2px;
+    margin-right: 6px;
     font-style: normal;
   }
 
