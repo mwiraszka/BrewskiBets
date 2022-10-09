@@ -24,7 +24,7 @@ describe('FooterComponent', () => {
   it('should include the current year and app title', () => {
     const el = fixture.nativeElement as HTMLElement;
     const currentYear = new Date().getFullYear();
-    expect(el.querySelector('small')?.textContent).toContain(
+    expect(el.querySelector('small')?.textContent).toBe(
       `Copyright © ${currentYear} Brewski Bets`
     );
   });
