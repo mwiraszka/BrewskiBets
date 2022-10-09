@@ -25,7 +25,7 @@ describe('AppComponent', () => {
   it('should render coming soon message', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('p')?.textContent).toBe('Coming soon!');
+    const el = fixture.nativeElement as HTMLElement;
+    expect(el.querySelector('p')?.textContent).toBe('Coming soon!');
   });
 });

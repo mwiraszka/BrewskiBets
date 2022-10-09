@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  flex-flow: column nowrap;
+  text-align: center;
+  padding: 20px 0;
+  white-space: nowrap;
+  gap: 6px;
+  font-size: 11px;
+}
+
+small {
+  font-size: inherit;
+}
+
+address {
+  text-decoration: none;
+
+  p {
+    display: inline;
+    margin-right: 6px;
+    font-style: normal;
+  }
+
+  a {
+    font-style: normal;
+    text-decoration: none;
+    color: hsl(210, 70%, 55%);
+
+    &:hover {
+      color: lighten(hsl(210, 70%, 55%), 10%);
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "brewski-bets",
+  "short_name": "bb",
+  "theme_color": "#ffffff",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./"
+}
