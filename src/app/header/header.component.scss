@@ -1,11 +1,26 @@
 :host {
+  white-space: nowrap;
+  padding: 0.5em 0;
+}
+
+.app-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  white-space: nowrap;
+  gap: 14px;
+  
+  h1 {
+    font-weight: normal;
+    margin: unset;
+  }
+  
+  img {
+    height: 36px;
+  }
 }
 
-img {
-  width: 50px;
+h2 {
+  font-size: 14px;
+  font-weight: normal;
+  color: hsl(0, 0%, 27%);
 }

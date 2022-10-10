@@ -4,7 +4,7 @@
 <br />
 
 <p>
-Brewski Bets is the official platform for betting brewskis for the FIFA World Cup Qatar 2022™
+Brewski Bets is the official platform for betting brewskis on the FIFA World Cup Qatar 2022™
 </p>
 <br />
 
@@ -13,17 +13,21 @@ Brewski Bets is the official platform for betting brewskis for the FIFA World Cu
 <details>
 <summary style="cursor: pointer">v0.5.0-alpha</summary>
 
-**Released on October 9th, 2022**
+**Released on October 10th, 2022**
 
 <h4 style="color: green">Features</h4>
 
-- [Core] TBD
-- [Frontend] TBD
+- [Core] Create Mario and Wario svgs and add to bet-table header as accompanying avatars
+- [Frontend] Build out remainder of main app - `header`, `bet-table`, and `footer` components with dummy data
+- [Frontend] Add `FortAwesome` beer and plus icons
 
-<h4 style="color: orange">Chores/ Tests</h4>
+<h4 style="color: orange">Refactor</h4>
 
-- [Core] TBD
-- [Frontend] TBD
+- [Frontend] Refactor all colours to use HSL format instead of hexadecimal or RGB values
+
+<h4 style="color: red">Bug Fixes</h4>
+
+- [Backend] Ensure old source files are not cached in CloudFront by setting invalidations to all files (`/*`)
 
 </details>
 
@@ -41,7 +45,7 @@ Brewski Bets is the official platform for betting brewskis for the FIFA World Cu
 <h4 style="color: orange">Chores/ Tests</h4>
 
 - [Core] Reorganize this README.md and mock-ups
-- [Core] Configure Jest as testing platform, write a few placeholder tests for `Footer` component, and test the ESLint linter with current CI pipeline
+- [Core] Configure Jest as testing platform, write a few placeholder tests for `footer` component, and test the ESLint linter with current CI pipeline
 - [Frontend] Add 'noscript' message for any users on ancient machines
 
 </details>
