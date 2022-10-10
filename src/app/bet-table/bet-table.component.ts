@@ -39,7 +39,7 @@ export class BetTableComponent implements OnInit {
         description: 'Description 3 is a pretty short one',
         brewsForKasin: 5,
         brewsForMichal: 8,
-        result: 'kasinWins',
+        result: null,
       },
       {
         id: '4',
@@ -54,7 +54,7 @@ export class BetTableComponent implements OnInit {
           'This bet over here takes up quite a bit of space and includes lots of additional information (some in parantheses), and some like this - and maybe even some like this',
         brewsForKasin: 6,
         brewsForMichal: 2,
-        result: 'michalWins',
+        result: null,
       },
       {
         id: '6',
@@ -68,7 +68,7 @@ export class BetTableComponent implements OnInit {
         description: 'This is a placeholder description for bet number 7',
         brewsForKasin: 2,
         brewsForMichal: 3,
-        result: 'void',
+        result: null,
       },
       {
         id: '8',
@@ -76,14 +76,14 @@ export class BetTableComponent implements OnInit {
           "Here's a description for bet 8 (and here are some additional details)",
         brewsForKasin: 6,
         brewsForMichal: 2,
-        result: 'michalWins',
+        result: 'void',
       },
       {
         id: '9',
         description: 'Description 9 is a pretty short one',
         brewsForKasin: 5,
-        brewsForMichal: 8,
-        result: 'kasinWins',
+        brewsForMichal: 4,
+        result: 'void',
       },
       {
         id: '10',
@@ -98,7 +98,7 @@ export class BetTableComponent implements OnInit {
           'This bet over here takes up quite a bit of space and includes lots of additional information (some in parantheses), and some like this - and maybe even some like this',
         brewsForKasin: 3,
         brewsForMichal: 2,
-        result: 'michalWins',
+        result: 'void',
       },
       {
         id: '12',

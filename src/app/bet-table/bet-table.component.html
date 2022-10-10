@@ -38,7 +38,11 @@
 								 [icon]="faBeerMugEmpty">
 				</fa-icon>
 			</td>
-			<td class="bet-description">{{ bet.description }}</td>
+			<td class="bet-description"
+					[class.void]="bet.result === 'void'"
+					[class.done]="bet.result">
+				{{ bet.description }}
+			</td>
 			<td>
 				<fa-icon *ngFor="let brew of [].constructor(bet.brewsForKasin)"
 								 class="beer-icon"

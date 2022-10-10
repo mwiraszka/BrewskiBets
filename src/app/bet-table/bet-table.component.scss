@@ -76,6 +76,29 @@ table {
       &.bet-description {
         min-width: 150px;
         font-size: 12px;
+
+        &.done {
+          color:hsla(0, 0%, 20%, 0.4);
+          text-decoration: line-through;
+          font-style: italic;
+        }
+
+        // Roughly centred vertically over description when one line high;
+        // otherwise appears near bottom of description
+        &.void::after {
+          content: "VOID";
+          position: relative;
+          bottom: 10px;
+          transform: rotate(-30deg) !important;
+          width: 100%;
+          display: inline-block;
+  
+          font-size: 20px;
+          letter-spacing: 6px;
+          text-decoration: none !important;
+          font-style: normal !important;
+          color: rgba(198, 52, 52, 0.4) !important;
+        }
       }
     }
   }
