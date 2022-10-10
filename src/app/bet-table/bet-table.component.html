@@ -1,7 +1,79 @@
-<div>
-	<p>
-		<a href="https://github.com/mwiraszka/BrewskiBets#readme"
-			 target="_blank">Coming soon!
-		</a>
-	</p>
-</div>
+<table>
+	<thead>
+		<tr>
+			<th>
+				<div class="th-flex-container">
+					<span>Michal</span>
+					<img src="assets/mario.svg"
+							 alt="Mario avatar" />
+				</div>
+			</th>
+			<th>
+				<div class="th-flex-container">
+					<button class="new-bet"
+									(click)="onNewBet()">
+						<span>New bet</span>
+						<fa-icon [icon]="faPlusSquare"
+										 class="plus-icon">
+						</fa-icon>
+					</button>
+				</div>
+			</th>
+			<th>
+				<div class="th-flex-container">
+					<span>Kasin</span>
+					<img src="assets/wario.svg"
+							 alt="Wario avatar" />
+				</div>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let bet of bets; let i = index"
+				(click)="onEditBet(bet)">
+			<td>
+				<fa-icon *ngFor="let brew of [].constructor(bet.brewsForMichal)"
+								 class="beer-icon"
+								 [class.won]="bet.result === 'michalWins'"
+								 [icon]="faBeerMugEmpty">
+				</fa-icon>
+			</td>
+			<td class="bet-description">{{ bet.description }}</td>
+			<td>
+				<fa-icon *ngFor="let brew of [].constructor(bet.brewsForKasin)"
+								 class="beer-icon"
+								 [class.won]="bet.result === 'kasinWins'"
+								 [icon]="faBeerMugEmpty">
+				</fa-icon>
+			</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td>
+				<fa-icon *ngFor="let brew of [].constructor(totalMichalWins)"
+								 class="beer-icon won"
+								 [icon]="faBeerMugEmpty">
+				</fa-icon>
+				<fa-icon *ngFor="let brew of [].constructor(totalBrewsForMichal - totalMichalWins)"
+								 class="beer-icon"
+								 [icon]="faBeerMugEmpty">
+				</fa-icon>
+			</td>
+			<td>
+				Total brewskis:<br />
+				{{ totalMichalWins }}&ndash;{{ totalKasinWins }}
+			</td>
+			<td>
+				<fa-icon *ngFor="let brew of [].constructor(totalKasinWins)"
+								 class="beer-icon won"
+								 [icon]="faBeerMugEmpty">
+				</fa-icon>
+				<fa-icon *ngFor="let brew of [].constructor(totalBrewsForKasin - totalKasinWins)"
+								 class="beer-icon"
+								 [icon]="faBeerMugEmpty">
+				</fa-icon>
+			</td>
+		</tr>
+	</tfoot>
+</table>

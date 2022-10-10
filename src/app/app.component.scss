@@ -10,12 +10,12 @@
 main {
   flex-grow: 1;
   width: 100%;
-  background-color: #fafafa;
+  background-color: hsl(0, 0%, 98%);
 }
 
 bb-header,
 bb-footer {
   flex-shrink: 0;
   width: 100%;
-  background-color: #f0ebdd;
+  background-color: hsla(97, 35%, 78%, 0.4);
 }

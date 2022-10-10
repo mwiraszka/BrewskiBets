@@ -3,22 +3,108 @@
   align-items: center;
   justify-content: center;
   min-height: 400px;
+  margin: 8px;
 }
 
-// temp
-div {
-  width: 300px;
-  border: 1px solid rgba(50,50,50,0.1);
+table {
+  max-width: 600px;
+  box-shadow: 3px 2px 8px 0 #aaa;
+  overflow: hidden;
   border-radius: 4px;
-  text-align: center;
+  border-collapse: collapse;
 
-  p a {
-    font-style: normal;
-    text-decoration: none;
-    color: hsl(210, 70%, 55%);
+  thead {
+    position: sticky;
+    top: 0;
+    font-size: 14px;
+    border-bottom: 2px solid rgba(206, 205, 205, 0.7);
+  
+    tr {
+      background-color: hsl(97, 45%, 82%);
+      white-space: nowrap;
+      border-radius: 4px;
+
+      .th-flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        margin: 8px;
+
+        span {
+          font-weight: normal;
+          color: hsl(0, 0%, 20%);
+        }
+
+        img {
+          height: 24px;
+        }
+
+        button {
+          border: 1px solid hsla(45, 3%, 24%, 0.1);
+          border-radius: 4px;
+          display: flex;
+          justify-content: center;
+          gap: 6px;
+          padding: 4px 16px;
+
+          &:hover {
+            cursor: pointer;
+            background-color: hsl(0, 0%, 89%);
+
+            span, fa-icon {
+              color: hsl(0, 0%, 0%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  tbody tr {
+    background-color: hsl(0, 0%, 96%);
+    border-radius: 4px;
 
     &:hover {
-      color: lighten(hsl(210, 70%, 55%), 10%);
+      background-color: hsla(199, 43%, 83%, 0.272);
+      cursor: pointer;
     }
+
+    td {
+      padding: 6px;
+
+      &.bet-description {
+        min-width: 150px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  tfoot {
+    position: sticky;
+    bottom: 0;
+    border-top: 2px solid rgba(206, 205, 205, 0.7);
+  
+    tr {
+      background-color: hsl(97, 45%, 82%);
+
+      td {
+        padding: 6px;
+      }
+    }  
+  }
+}
+
+fa-icon {
+  &.plus-icon {
+   color: hsl(0, 0%, 27%); 
+  }
+
+  &.beer-icon.won {
+    color: hsl(39, 100%, 50%);
+  }
+
+  &.beer-icon:not(.won) {
+    color: hsla(39, 100%, 50%, 0.3);
   }
 }

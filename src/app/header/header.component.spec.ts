@@ -2,8 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
 
-// Intentionally mislabelled
-describe('FooterComponent', () => {
+describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 
@@ -17,11 +16,7 @@ describe('FooterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should intentionally fail ES linting', () => {
-    expect(component).toBeTruthy();
-  });
-
-  // Intentionally duplicated to test ESLint plugin
+  // not failing linting...
   it('should intentionally fail ES linting', () => {
     expect(component).toBeTruthy();
   });
