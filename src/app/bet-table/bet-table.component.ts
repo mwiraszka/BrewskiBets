@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faBeerMugEmpty, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+
+import { BetService } from '../services/bet.service';
 import { Bet } from '../types/bet.model';
 
 @Component({
@@ -16,6 +18,8 @@ export class BetTableComponent implements OnInit {
   totalBrewsForKasin!: number;
   totalMichalWins!: number;
   totalKasinWins!: number;
+
+  constructor(private betService: BetService) {}
 
   ngOnInit(): void {
     this.bets = [
@@ -129,11 +133,7 @@ export class BetTableComponent implements OnInit {
       .reduce((prev, curr) => prev + curr);
   }
 
-  onNewBet(): void {
-    console.log('New bet');
-  }
-
-  onEditBet(bet: Bet): void {
-    console.log('Edit bet', bet);
+  openEditor(bet?: Bet): void {
+    this.betService.openEditor(bet);
   }
 }

@@ -11,8 +11,8 @@
 			<th>
 				<div class="th-flex-container">
 					<button class="new-bet"
-									(click)="onNewBet()">
-						<span>New bet</span>
+									(click)="openEditor()">
+						<span>NEW BET</span>
 						<fa-icon [icon]="faPlusSquare"
 										 class="plus-icon">
 						</fa-icon>
@@ -22,15 +22,15 @@
 			<th>
 				<div class="th-flex-container">
 					<span>Kasin</span>
-					<img src="assets/wario.svg"
-							 alt="Wario avatar" />
+					<img src="assets/bowser.svg"
+							 alt="Bowser avatar" />
 				</div>
 			</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr *ngFor="let bet of bets; let i = index"
-				(click)="onEditBet(bet)">
+				(click)="openEditor(bet)">
 			<td>
 				<fa-icon *ngFor="let brew of [].constructor(bet.brewsForMichal)"
 								 class="beer-icon"
@@ -81,3 +81,5 @@
 		</tr>
 	</tfoot>
 </table>
+
+<bb-bet-editor></bb-bet-editor>

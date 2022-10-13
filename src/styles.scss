@@ -4,4 +4,10 @@
 
 body {
   margin: 0;
+
+  // Disable scrolling when bet-editor modal is open
+  &.editor-open {
+    height: 100%;
+    overflow: hidden;
+  }
 }

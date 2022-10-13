@@ -1,0 +1,178 @@
+button {
+  cursor: pointer;
+}
+
+section {
+  visibility: hidden;
+  opacity: 0;
+
+  &.open {
+    visibility: inherit;
+    opacity: 1;
+  }
+
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: rgba(0, 0, 0, 0.4);
+  transition: opacity 1s ease-in;
+}
+
+.bet-editor-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background: white;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 2px 1px 8px 0 hsla(0, 0%, 89%, 0.7);
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+button.close {
+  background: none;
+  width: 30px;
+  height: 30px;
+  border: none;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2px;
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+textarea {
+  height: 200px;
+  width: 100%;
+  resize: none;
+  font-size: 12px;
+}
+
+fieldset {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  padding: 1em 0;
+
+  &.result-set {
+    padding-top: 0.2em;
+  }
+
+  .form-field {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+
+    &.brews-for-michal,
+    &.brews-for-kasin {
+      justify-content: space-between;
+    }
+  }
+
+  label {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+
+    fa-icon {
+      color: hsl(39, 100%, 50%);
+    }
+  }
+
+  input,
+  textarea {
+    outline: none;
+    border: 1px solid rgba(172, 172, 172, 0.8);
+    border-radius: 4px;
+
+    &.ng-touched.ng-invalid {
+      border: 1px solid rgba(233, 82, 82, 0.8);
+    }
+
+    &.brews-for-michal-input,
+    &.brews-for-kasin-input {
+      width: 18px;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+}
+
+h4 {
+  margin: 2em 0 0;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+hr {
+  width: 80%;
+  height: 3px;
+  border: none;
+  border-top: 1px solid rgba(194, 194, 194, 0.6);
+}
+
+.buttons-container {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 4px;
+
+  button {
+    &.submit,
+    &.delete {
+      padding: 4px 12px;
+      margin: 16px 0 8px;
+      border: 1px solid hsla(0, 0%, 87%, 0.5);
+      border-radius: 4px;
+    }
+
+    &.submit {
+      background-color: hsl(97, 45%, 82%);
+      
+      &:hover {
+        background-color: hsl(0, 0%, 94%);
+      }
+    }
+
+    &.delete {
+      background-color:hsl(0, 80%, 73%);
+  
+      &:hover {
+        background-color: hsl(0, 75%, 80%);
+      }
+    }
+
+    &:disabled {
+      cursor: default;
+      pointer-events: none;
+      background-color: rgba(168, 168, 168, 0.2);
+      color: rgba(149, 149, 149, 0.746);
+    }
+  }
+}
