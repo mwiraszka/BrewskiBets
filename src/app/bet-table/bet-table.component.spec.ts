@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 
 import { BetTableComponent } from './bet-table.component';
 
@@ -8,9 +9,9 @@ describe('BetTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [FontAwesomeTestingModule],
       declarations: [BetTableComponent],
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BetTableComponent);
     component = fixture.componentInstance;
