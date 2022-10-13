@@ -27,7 +27,7 @@ address {
     color: hsl(210, 70%, 55%);
 
     &:hover {
-      color: lighten(hsl(210, 70%, 55%), 10%);
+      color: hsl(210, 70%, 65%);
     }
   }
 }

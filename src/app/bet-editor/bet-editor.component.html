@@ -1,1 +1,108 @@
-<p>bet-editor works!</p>
+<ng-container *ngIf="display$ | async as display">
+	<section [class.open]="display"
+					 (click)="onClose()">
+		<div class="bet-editor-content"
+				 (click)="$event.stopPropagation()">
+			<button class="close"
+							type="button"
+							(click)="onClose()">
+				<fa-icon [icon]="faClose"></fa-icon>
+			</button>
+			<h3>{{ bet ? 'Edit bet' : 'Add bet' }}</h3>
+
+			<form [formGroup]="form"
+						(ngSubmit)="onSubmit()">
+				<fieldset>
+					<textarea id="description-input"
+										class="description-input"
+										name="description"
+										formControlName="description"
+										maxlength="500"></textarea>
+				</fieldset>
+
+				<fieldset>
+					<div class="form-field brews-for-michal">
+						<label for="brews-for-michal-input">
+							<fa-icon [icon]="faBeerMugEmpty"></fa-icon>
+							<span>for Michal</span>
+						</label>
+						<input id="brews-for-michal-input"
+									 class="brews-for-michal-input"
+									 type="text"
+									 name="brewsForMichal"
+									 formControlName="brewsForMichal"
+									 maxlength="1" />
+					</div>
+					<div class="form-field brews-for-kasin">
+						<label for="brews-for-kasin-input">
+							<fa-icon [icon]="faBeerMugEmpty"></fa-icon>
+							<span>for Kasin</span>
+						</label>
+						<input id="brews-for-kasin-input"
+									 class="brews-for-kasin-input"
+									 type="text"
+									 name="brewsForKasin"
+									 formControlName="brewsForKasin"
+									 maxlength="1" />
+					</div>
+				</fieldset>
+
+				<h4>Result</h4>
+				<hr />
+
+				<fieldset class="result-set">
+					<div class="form-field michal-wins">
+						<input type="checkbox"
+									 id="michal-wins-input"
+									 name="michalWins"
+									 [checked]="result === 'michalWins'"
+									 (change)="onCheckboxChange('michalWins')" />
+						<label for="michal-wins-input">Michal wins</label>
+					</div>
+					<div class="form-field kasin-wins">
+						<input type="checkbox"
+									 id="kasin-wins-input"
+									 name="kasinWins"
+									 [checked]="result === 'kasinWins'"
+									 (change)="onCheckboxChange('kasinWins')" />
+						<label for="kasin-wins-input">Kasin wins</label>
+					</div>
+					<div class="form-field void">
+						<input type="checkbox"
+									 id="void-input"
+									 name="void"
+									 [checked]="result === 'void'"
+									 (change)="onCheckboxChange('void')" />
+						<label for="void-input">Void</label>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<div class="form-field password">
+						<label for="password-input">Password</label>
+						<input id="password-input"
+									 class="password-input"
+									 type="password"
+									 name="password"
+									 formControlName="password"
+									 maxlength="20" />
+					</div>
+				</fieldset>
+
+				<div class="buttons-container">
+					<button class="submit"
+									type="submit"
+									[disabled]="form.invalid">
+						{{ bet ? 'UPDATE' : 'ADD' }}
+					</button>
+					<button *ngIf="bet"
+									class="delete"
+									type="button"
+									(click)="onDelete(bet)">
+						DELETE
+					</button>
+				</div>
+			</form>
+		</div>
+	</section>
+</ng-container>
