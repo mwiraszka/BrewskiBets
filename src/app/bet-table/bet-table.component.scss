@@ -4,6 +4,10 @@
   justify-content: center;
   min-height: 400px;
   margin: 8px;
+
+  @media only screen and (max-width: 450px) {
+    margin: 8px 0;
+  }
 }
 
 table {
@@ -15,8 +19,9 @@ table {
 
   thead {
     position: sticky;
+    z-index: 10;
     top: 0;
-    font-size: 18px;
+    font-size: 16px;
     border-bottom: 2px solid rgba(206, 205, 205, 0.7);
   
     tr {
@@ -65,6 +70,10 @@ table {
     background-color: hsl(0, 0%, 96%);
     border-radius: 4px;
 
+    &:nth-child(even) {
+      background-color: hsl(0, 0%, 94%);
+    }
+
     &:hover {
       background-color: hsla(199, 43%, 83%, 0.272);
       cursor: pointer;
@@ -74,7 +83,7 @@ table {
       padding: 6px;
 
       &.bet-description {
-        min-width: 150px;
+        min-width: 120px;
         font-size: 12px;
 
         &.done {

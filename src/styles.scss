@@ -4,6 +4,7 @@
 
 body {
   margin: 0;
+  background-color: hsla(97, 35%, 88%);
 
   // Disable scrolling when bet-editor modal is open
   &.editor-open {

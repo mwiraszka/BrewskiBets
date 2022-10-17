@@ -12,7 +12,8 @@ section {
   }
 
   display: block;
-  position: absolute;
+  position: fixed;
+  z-index: 20;
   top: 0;
   left: 0;
   right: 0;
@@ -60,7 +61,7 @@ form {
 }
 
 textarea {
-  height: 200px;
+  height: 120px;
   width: 100%;
   resize: none;
   font-size: 12px;

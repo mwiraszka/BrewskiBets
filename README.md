@@ -11,17 +11,32 @@ Brewski Bets is the official platform for betting brewskis on the FIFA World Cup
 <h2>Releases</h2>
 
 <details>
+<summary style="cursor: pointer">v0.7.0-alpha</summary>
+
+**Released on October 16th, 2022**
+
+<h4 style="color: green">Features</h4>
+
+- [Frontend] Reduce font-size of `bet-table` header names, expand table to full width on small viewports, and match `body` background-color to that of the header and footer for a better mobile UX
+
+<h4 style="color: red">Bug Fixes</h4>
+
+- [Frontend] Fix various small bugs related to `bet-editor` overlay
+
+</details>
+
+<details>
 <summary style="cursor: pointer">v0.6.1-alpha</summary>
 
 **Released on October 13th, 2022**
 
-<h4 style="color: green">Bug Fixes</h4>
-
-- [Frontend] Import all necessary modules in `bet-editor` and `bet-table` to fix broken tests
-
 <h4 style="color: orange">Refactor</h4>
 
 - [Frontend] Un-nest the `bet-editor` component one level in the HTML so that it is a direct child of `app`
+
+<h4 style="color: red">Bug Fixes</h4>
+
+- [Frontend] Import all necessary modules in `bet-editor` and `bet-table` to fix broken tests
 
 </details>
 
