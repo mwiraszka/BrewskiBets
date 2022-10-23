@@ -61,18 +61,27 @@ export class BetEditorComponent implements OnInit, OnDestroy {
   }
 
   onDelete(): void {
+    this.betService.setLoadingSpinner(true);
     const [newBet, code] = this.handleBetData(this.form.value);
-    this.betService.deleteBet(newBet, code).then((res) => {});
+
+    this.betService.deleteBet(newBet, code).then((res) => {
+      this.betService.setLoadingSpinner(false);
+    });
     this.betService.closeEditor();
   }
 
   onSubmit(): void {
+    this.betService.setLoadingSpinner(true);
     const [newBet, code] = this.handleBetData(this.form.value);
 
     if (this.isEditMode) {
-      this.betService.updateBet(newBet, code).then((res) => {});
+      this.betService.updateBet(newBet, code).then((res) => {
+        this.betService.setLoadingSpinner(false);
+      });
     } else {
-      this.betService.addBet(newBet, code).then((res) => {});
+      this.betService.addBet(newBet, code).then((res) => {
+        this.betService.setLoadingSpinner(false);
+      });
     }
 
     this.betService.closeEditor();

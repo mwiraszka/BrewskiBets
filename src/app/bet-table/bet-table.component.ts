@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { BetService } from '../services/bet.service';
 import { Bet } from '../types/bet.model';
 import { BrewTotals } from '../types/brew-totals.model';
-import { customSort } from '../types/utils/custom-sort';
+import { customSort } from '../utils/custom-sort';
 
 @Component({
   selector: 'bb-bet-table',
@@ -23,7 +23,12 @@ export class BetTableComponent implements OnInit, OnDestroy {
   constructor(private betService: BetService) {}
 
   ngOnInit(): void {
-    this.betService.getBets().then((res) => {});
+    this.betService.setLoadingSpinner(true);
+
+    this.betService.getBets().then((res) => {
+      this.betService.setLoadingSpinner(false);
+    });
+
     this.betsSubscription = this.betService.bets$.subscribe((bets) => {
       this.bets = [...bets].sort(customSort('id', true));
       this.brewTotals = this.tallyBrewTotals(bets);
