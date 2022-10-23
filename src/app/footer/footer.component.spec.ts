@@ -17,21 +17,28 @@ describe('FooterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  describe('Rendering', () => {
+    it('should render the component', () => {
+      expect(component).toBeTruthy();
+    });
 
-  it('should include the current year and app title', () => {
-    const el = fixture.nativeElement as HTMLElement;
-    const currentYear = new Date().getFullYear();
-    expect(el.querySelector('small')?.textContent).toBe(
-      `Copyright © ${currentYear} Brewski Bets`
-    );
-  });
+    it('<small> should contain copyright information', () => {
+      const currentYear = new Date().getFullYear();
+      expect(getElement('small')?.textContent).toBe(
+        `Copyright © ${currentYear} Brewski Bets`
+      );
+    });
 
-  it('should include the app version', () => {
-    const el = fixture.nativeElement as HTMLElement;
-    const appVersion = packageJson.version;
-    expect(el.querySelector('address p')?.textContent).toBe(`v${appVersion}`);
+    it('<address> should contain the app version and a link to the GitHub repo', () => {
+      const appVersion = packageJson.version;
+      expect(getElement('address p')?.textContent).toBe(`v${appVersion}`);
+      expect(getElement('address a')?.getAttribute('href')).toBe(
+        'https://github.com/mwiraszka/BrewskiBets#readme'
+      );
+    });
+
+    function getElement(selector: string): HTMLElement | null {
+      return fixture.debugElement.nativeElement.querySelector(selector);
+    }
   });
 });

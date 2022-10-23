@@ -44,22 +44,13 @@ export class BetTableComponent implements OnInit, OnDestroy {
   }
 
   private tallyBrewTotals(bets: Bet[]): BrewTotals {
-    if (!bets.length) {
-      return {
-        michalPossible: 0,
-        kasinPossible: 0,
-        michalWon: 0,
-        kasinWon: 0,
-      };
-    }
-
     return {
       michalPossible: bets
         .map((bet) => bet.brewsForMichal)
-        .reduce((prev, curr) => prev + curr),
+        .reduce((prev, curr) => prev + curr, 0),
       kasinPossible: bets
         .map((bet) => bet.brewsForKasin)
-        .reduce((prev, curr) => prev + curr),
+        .reduce((prev, curr) => prev + curr, 0),
       michalWon: bets
         .filter((bet) => bet.result === 'michalWins')
         .map((bet) => bet.brewsForMichal)

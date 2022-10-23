@@ -11,6 +11,23 @@ Brewski Bets is the official platform for betting brewskis on the FIFA World Cup
 <h2>Releases</h2>
 
 <details>
+<summary style="cursor: pointer">v1.0.0</summary>
+
+**Released on October 23rd, 2022**
+
+<h4 style="color: green">Features</h4>
+
+- [Frontend] Improve error handling by displaying error and success notifications (using `@ngneat/hot-toast` library) and ensuring editor modal only closes if API request succeeded
+
+<h4 style="color: orange">Refactor/ Chores/ Tests</h4>
+
+- [Frontend] Implement separate `isEditorOpen$` subscription in `bet-editor` component to faciliate testing
+- [Frontend] Clean up some unused/ unnecessary code
+- [Frontend] Write static HTML rendering unit tests for all components
+
+</details>
+
+<details>
 <summary style="cursor: pointer">v0.7.1-alpha</summary>
 
 **Released on October 23rd, 2022**

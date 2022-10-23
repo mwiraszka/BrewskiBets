@@ -73,7 +73,10 @@ export class BetService {
             this._bets.next(this._bets.value?.concat([betToAdd]));
           }),
           map(() => ({ payload: { bet: betToAdd } })),
-          catchError(() => of({ error: new Error('Failed to add new bet') }))
+          /** AWS does not return any meaningful error codes/types (only 'UnknownError'),
+           * so just assume the request fails due to an invalid x-api-key
+           */
+          catchError(() => of({ error: new Error('Unauthorized') }))
         )
     );
   }
@@ -93,7 +96,9 @@ export class BetService {
             );
           }),
           map(() => ({ payload: { bet: betToUpdate } })),
-          catchError(() => of({ error: new Error('Failed to update bet') }))
+          catchError(() => {
+            return of({ error: new Error('Unauthorized') });
+          })
         )
     );
   }
@@ -109,7 +114,7 @@ export class BetService {
             this._bets.next(this._bets.value.filter((bet) => bet.id !== betToDelete.id));
           }),
           map(() => ({ payload: { bet: betToDelete } })),
-          catchError(() => of({ error: new Error('Failed to delete bet') }))
+          catchError(() => of({ error: new Error('Unauthorized') }))
         )
     );
   }
