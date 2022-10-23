@@ -12,7 +12,8 @@ section {
   }
 
   display: block;
-  position: absolute;
+  position: fixed;
+  z-index: 20;
   top: 0;
   left: 0;
   right: 0;
@@ -60,7 +61,7 @@ form {
 }
 
 textarea {
-  height: 200px;
+  height: 120px;
   width: 100%;
   resize: none;
   font-size: 12px;
@@ -74,10 +75,6 @@ fieldset {
   gap: 6px;
   border: none;
   padding: 1em 0;
-
-  &.result-set {
-    padding-top: 0.2em;
-  }
 
   .form-field {
     display: flex;
@@ -99,7 +96,7 @@ fieldset {
     justify-content: center;
     align-items: center;
     gap: 6px;
-    font-size: 14px;
+    font-size: 13px;
 
     fa-icon {
       color: hsl(39, 100%, 50%);
@@ -122,11 +119,16 @@ fieldset {
       font-size: 16px;
       text-align: center;
     }
+
+    &.code-input {
+      width: 180px;
+      text-align: center;
+    }
   }
 }
 
 h4 {
-  margin: 2em 0 0;
+  margin: 1.4em 0 0;
   font-size: 14px;
   font-weight: normal;
 }
@@ -136,6 +138,10 @@ hr {
   height: 3px;
   border: none;
   border-top: 1px solid rgba(194, 194, 194, 0.6);
+
+  & + fieldset {
+    padding-top: 0.2em;
+  }
 }
 
 .buttons-container {

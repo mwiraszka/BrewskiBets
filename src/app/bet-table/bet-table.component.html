@@ -38,10 +38,10 @@
 								 [icon]="faBeerMugEmpty">
 				</fa-icon>
 			</td>
-			<td class="bet-description"
+			<td class="bet-details"
 					[class.void]="bet.result === 'void'"
 					[class.done]="bet.result">
-				{{ bet.description }}
+				{{ bet.details }}
 			</td>
 			<td>
 				<fa-icon *ngFor="let brew of [].constructor(bet.brewsForKasin)"
@@ -55,25 +55,25 @@
 	<tfoot>
 		<tr>
 			<td>
-				<fa-icon *ngFor="let brew of [].constructor(totalMichalWins)"
+				<fa-icon *ngFor="let brew of [].constructor(brewTotals.michalWon)"
 								 class="beer-icon won"
 								 [icon]="faBeerMugEmpty">
 				</fa-icon>
-				<fa-icon *ngFor="let brew of [].constructor(totalBrewsForMichal - totalMichalWins)"
+				<fa-icon *ngFor="let brew of [].constructor(brewTotals.michalPossible - brewTotals.michalWon)"
 								 class="beer-icon"
 								 [icon]="faBeerMugEmpty">
 				</fa-icon>
 			</td>
 			<td>
 				Total brewskis:<br />
-				{{ totalMichalWins }}&ndash;{{ totalKasinWins }}
+				{{ brewTotals.michalWon }}&ndash;{{ brewTotals.kasinWon }}
 			</td>
 			<td>
-				<fa-icon *ngFor="let brew of [].constructor(totalKasinWins)"
+				<fa-icon *ngFor="let brew of [].constructor(brewTotals.kasinWon)"
 								 class="beer-icon won"
 								 [icon]="faBeerMugEmpty">
 				</fa-icon>
-				<fa-icon *ngFor="let brew of [].constructor(totalBrewsForKasin - totalKasinWins)"
+				<fa-icon *ngFor="let brew of [].constructor(brewTotals.kasinPossible - brewTotals.kasinWon)"
 								 class="beer-icon"
 								 [icon]="faBeerMugEmpty">
 				</fa-icon>

@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,7 +18,7 @@ import { HeaderComponent } from './header/header.component';
     FooterComponent,
     HeaderComponent,
   ],
-  imports: [BrowserModule, FontAwesomeModule, ReactiveFormsModule],
+  imports: [BrowserModule, FontAwesomeModule, HttpClientModule, ReactiveFormsModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

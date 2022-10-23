@@ -1,24 +1,31 @@
 import { DOCUMENT } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
+import { environment } from '../../environments/environment';
+import { ApiResponse } from '../types/api-response.model';
 import { Bet } from '../types/bet.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BetService {
+  _bets = new BehaviorSubject<Bet[]>([]);
+  bets$ = this._bets.asObservable();
+
   _isEditorOpen = new BehaviorSubject(false);
   isEditorOpen$ = this._isEditorOpen.asObservable();
 
-  _bet = new BehaviorSubject<Bet | undefined>(undefined);
-  bet$ = this._bet.asObservable();
+  _betInEditor = new BehaviorSubject<Bet | null>(null);
+  betInEditor$ = this._betInEditor.asObservable();
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private document: Document, private http: HttpClient) {}
 
   openEditor(bet?: Bet): void {
+    this._betInEditor.next(bet ?? null);
     this._isEditorOpen.next(true);
-    this._bet.next(bet);
     this.document.body.classList.add('editor-open');
   }
 
@@ -27,15 +34,76 @@ export class BetService {
     this.document.body.classList.remove('editor-open');
   }
 
-  addBet(bet: Bet): void {
-    console.log('Add bet', bet);
+  async getBets(): Promise<ApiResponse> {
+    return firstValueFrom(
+      this.http.get<Bet[]>(environment.apiEndpoint).pipe(
+        tap((bets) => {
+          this._bets.next(bets);
+        }),
+        map((bets) => ({ payload: { bets } })),
+        catchError(() => of({ error: new Error('Failed to fetch bets from database') }))
+      )
+    );
   }
 
-  updateBet(bet: Bet): void {
-    console.log('Update bet', bet);
+  async addBet(betToAdd: Bet, code: string): Promise<ApiResponse> {
+    /**
+     * Escaping the backslash for new lines seems necessary to work with API Gateway
+     * integration mapping set up for this endpoint (not needed for updateBet())
+     */
+    const modifiedBet = {
+      ...betToAdd,
+      details: betToAdd.details.replaceAll('\n', '\\n'),
+    };
+
+    return firstValueFrom(
+      this.http
+        .post<ApiResponse>(environment.apiEndpoint, modifiedBet, {
+          headers: { 'x-api-key': code },
+        })
+        .pipe(
+          tap(() => {
+            this._bets.next(this._bets.value?.concat([betToAdd]));
+          }),
+          map(() => ({ payload: { bet: betToAdd } })),
+          catchError(() => of({ error: new Error('Failed to add new bet') }))
+        )
+    );
   }
 
-  deleteBet(bet: Bet): void {
-    console.log('Delete bet', bet);
+  async updateBet(betToUpdate: Bet, code: string): Promise<ApiResponse> {
+    return firstValueFrom(
+      this.http
+        .put<null>(environment.apiEndpoint + betToUpdate.id, betToUpdate, {
+          headers: { 'x-api-key': code },
+        })
+        .pipe(
+          tap(() => {
+            this._bets.next(
+              this._bets.value.map((bet) =>
+                bet.id === betToUpdate.id ? betToUpdate : bet
+              )
+            );
+          }),
+          map(() => ({ payload: { bet: betToUpdate } })),
+          catchError(() => of({ error: new Error('Failed to update bet') }))
+        )
+    );
+  }
+
+  async deleteBet(betToDelete: Bet, code: string): Promise<ApiResponse> {
+    return firstValueFrom(
+      this.http
+        .delete<null>(environment.apiEndpoint + betToDelete.id, {
+          headers: { 'x-api-key': code },
+        })
+        .pipe(
+          tap(() => {
+            this._bets.next(this._bets.value.filter((bet) => bet.id !== betToDelete.id));
+          }),
+          map(() => ({ payload: { bet: betToDelete } })),
+          catchError(() => of({ error: new Error('Failed to delete bet') }))
+        )
+    );
   }
 }

@@ -14,38 +14,40 @@ import { Bet } from '../types/bet.model';
 export class BetEditorComponent implements OnInit, OnDestroy {
   faClose = faClose;
   faBeerMugEmpty = faBeerMugEmpty;
-  result!: 'michalWins' | 'kasinWins' | 'void' | null;
 
-  display$!: Observable<boolean>;
-  bet?: Bet;
+  bet: Bet | null = null;
   betSubscription!: Subscription;
+  isEditMode = false;
+  display$!: Observable<boolean>;
   form!: FormGroup;
+  result!: 'michalWins' | 'kasinWins' | 'void' | null;
 
   constructor(private betService: BetService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.display$ = this.betService.isEditorOpen$;
-    this.betSubscription = this.betService.bet$.subscribe((bet) => {
-      this.bet = bet;
-      this.initForm(bet);
+    this.betSubscription = this.betService.betInEditor$.subscribe((betInEditor) => {
+      this.bet = betInEditor;
+      this.isEditMode = !!this.bet;
+      this.initForm(this.bet);
       this.result = this.bet?.result ?? null;
     });
   }
 
-  initForm(bet?: Bet): void {
+  initForm(bet: Bet | null): void {
     this.form = this.formBuilder.group({
-      id: [bet?.id, [Validators.required]],
-      description: [bet?.description, [Validators.required, Validators.pattern(/[^\s]/)]],
+      id: [bet?.id],
+      details: [bet?.details, [Validators.required, Validators.pattern(/[^\s]/)]],
       brewsForMichal: [
         bet?.brewsForMichal,
-        [Validators.required, Validators.pattern(/\d/)],
+        [Validators.required, Validators.pattern(/[1-9]/)],
       ],
       brewsForKasin: [
         bet?.brewsForKasin,
-        [Validators.required, Validators.pattern(/\d/)],
+        [Validators.required, Validators.pattern(/[1-9]/)],
       ],
       result: [bet?.result],
-      password: ['', [Validators.required, Validators.pattern(/[^\s]/)]],
+      code: ['', [Validators.required, Validators.pattern(/[^\s]/)]],
     });
   }
 
@@ -58,17 +60,40 @@ export class BetEditorComponent implements OnInit, OnDestroy {
     this.betService.closeEditor();
   }
 
-  onDelete(bet: Bet): void {
-    this.betService.deleteBet(bet);
+  onDelete(): void {
+    const [newBet, code] = this.handleBetData(this.form.value);
+    this.betService.deleteBet(newBet, code).then((res) => {});
     this.betService.closeEditor();
   }
 
   onSubmit(): void {
-    console.log(':: submission:', this.form.value);
+    const [newBet, code] = this.handleBetData(this.form.value);
+
+    if (this.isEditMode) {
+      this.betService.updateBet(newBet, code).then((res) => {});
+    } else {
+      this.betService.addBet(newBet, code).then((res) => {});
+    }
+
     this.betService.closeEditor();
   }
 
   ngOnDestroy(): void {
     this.betSubscription.unsubscribe();
+  }
+
+  // Remove code and convert default string-type form control values to number-type
+  private handleBetData(formData: any): [Bet, string] {
+    const bet: Bet = {
+      id: this.form.controls['id'].value,
+      details: this.form.controls['details'].value,
+      brewsForKasin: +this.form.controls['brewsForKasin'].value,
+      brewsForMichal: +this.form.controls['brewsForMichal'].value,
+      result: this.form.controls['result'].value,
+    };
+
+    const code = this.form.controls['code'].value;
+
+    return [bet, code];
   }
 }

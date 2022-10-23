@@ -8,15 +8,16 @@
 							(click)="onClose()">
 				<fa-icon [icon]="faClose"></fa-icon>
 			</button>
-			<h3>{{ bet ? 'Edit bet' : 'Add bet' }}</h3>
+			<h3>{{ isEditMode ? 'Edit bet' : 'Add bet' }}</h3>
 
 			<form [formGroup]="form"
-						(ngSubmit)="onSubmit()">
+						(ngSubmit)="onSubmit()"
+						autocomplete="off">
 				<fieldset>
-					<textarea id="description-input"
-										class="description-input"
-										name="description"
-										formControlName="description"
+					<textarea id="details-input"
+										class="details-input"
+										name="details"
+										formControlName="details"
 										maxlength="500"></textarea>
 				</fieldset>
 
@@ -77,15 +78,17 @@
 					</div>
 				</fieldset>
 
+				<h4>Password</h4>
+				<hr />
+
 				<fieldset>
-					<div class="form-field password">
-						<label for="password-input">Password</label>
-						<input id="password-input"
-									 class="password-input"
-									 type="password"
-									 name="password"
-									 formControlName="password"
-									 maxlength="20" />
+					<div class="form-field code">
+						<input id="code-input"
+									 class="code-input"
+									 type="text"
+									 name="code"
+									 formControlName="code"
+									 maxlength="30" />
 					</div>
 				</fieldset>
 
@@ -93,12 +96,12 @@
 					<button class="submit"
 									type="submit"
 									[disabled]="form.invalid">
-						{{ bet ? 'UPDATE' : 'ADD' }}
+						{{ isEditMode ? 'UPDATE' : 'ADD' }}
 					</button>
-					<button *ngIf="bet"
+					<button *ngIf="isEditMode"
 									class="delete"
 									type="button"
-									(click)="onDelete(bet)">
+									(click)="onDelete()">
 						DELETE
 					</button>
 				</div>
