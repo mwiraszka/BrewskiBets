@@ -82,9 +82,10 @@ table {
     td {
       padding: 6px;
 
-      &.bet-description {
+      &.bet-details {
         min-width: 120px;
         font-size: 12px;
+        white-space: pre-wrap;
 
         &.done {
           color:hsla(0, 0%, 20%, 0.4);
@@ -92,8 +93,8 @@ table {
           font-style: italic;
         }
 
-        // Roughly centred vertically over description when one line high;
-        // otherwise appears near bottom of description
+        // Roughly centred vertically over details when one line high;
+        // otherwise appears near bottom of details
         &.void::after {
           content: "VOID";
           position: relative;

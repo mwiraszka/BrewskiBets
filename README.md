@@ -13,15 +13,28 @@ Brewski Bets is the official platform for betting brewskis on the FIFA World Cup
 <details>
 <summary style="cursor: pointer">v0.7.0-alpha</summary>
 
-**Released on October 16th, 2022**
+**Released on October 23rd, 2022**
 
 <h4 style="color: green">Features</h4>
 
 - [Frontend] Reduce font-size of `bet-table` header names, expand table to full width on small viewports, and match `body` background-color to that of the header and footer for a better mobile UX
+- [Frontend] Remove password-type from code `input` element to prevent browser from attempting to save it as a password
+- [Frontend] Add add, update and delete functionality
+- [Frontend] Support new-line characters (`\n`) in `details` field of form, and ensure characters are converted back to `<br>` tags in the HTML using 'white-space: pre-wrap;` CSS rule
+- [Backend] Create API key in AWS and add `x-api-key` header to add, update and delete API calls to prevent unauthorized requests
+- [Frontend] Sort bets in table based on new date-based id fields using new custom sort function
+- [Core] Add "ES2021.String" under "compilerOptions" > "lib" in `tsconfig.ts` file to allow String.prototype.ReplaceAll() function
+
+<h4 style="color: orange">Refactor</h4>
+
+- [Frontend] Add explicit `isEditMode` variable in `bet-editor` to clarify some logic in template
+- [Frontend] Rename 'description' as 'details' in `bet-editor` form since AWS API Gateway & Lambda cannot use 'description' as it's a reserved keyword
 
 <h4 style="color: red">Bug Fixes</h4>
 
 - [Frontend] Fix various small bugs related to `bet-editor` overlay
+- [Frontend] Invalidate form if either brew count is less than 1 (previously 0 was allowed)
+- [Backend] Ensure bet brew counts are always stored as strings in DynamoDB and converted back to numbers when retrieved
 
 </details>
 
@@ -48,9 +61,7 @@ Brewski Bets is the official platform for betting brewskis on the FIFA World Cup
 <h4 style="color: green">Features</h4>
 
 - [Frontend] Add `bet-editor` component, including basic validators, submission and deletion buttons, and overlay background over main app
-
 - [Frontend] Update avatar SVGs and replace Wario with Bowser
-
 - [Frontend] Create `bet-service` (with stub methods for now), which will be responsible for all API calls and app state
 
 </details>
