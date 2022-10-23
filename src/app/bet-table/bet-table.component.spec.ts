@@ -19,7 +19,25 @@ describe('BetTableComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('Rendering', () => {
+    it('should render the component', () => {
+      expect(component).toBeTruthy();
+    });
+
+    it('<table> should render a table with icons, images, and buttons inside it', () => {
+      expect(getElement('table thead')).toBeTruthy();
+      expect(getElement('table tbody')).toBeTruthy();
+      expect(getElement('table tfoot')).toBeTruthy();
+      expect(getElement('table th')).toBeTruthy();
+      expect(getElement('table tr')).toBeTruthy();
+      expect(getElement('table td')).toBeTruthy();
+      expect(getElement('table fa-icon')).toBeTruthy();
+      expect(getElement('table img')).toBeTruthy();
+      expect(getElement('table button')).toBeTruthy();
+    });
+
+    function getElement(selector: string): HTMLElement | null {
+      return fixture.debugElement.nativeElement.querySelector(selector);
+    }
   });
 });

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faClose, faBeerMugEmpty } from '@fortawesome/free-solid-svg-icons';
 import { HotToastService } from '@ngneat/hot-toast';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { BetService } from '../services/bet.service';
 import { Bet } from '../types/bet.model';
@@ -18,8 +18,11 @@ export class BetEditorComponent implements OnInit, OnDestroy {
 
   bet: Bet | null = null;
   betSubscription!: Subscription;
+
+  display = false;
+  displaySubscription!: Subscription;
+
   isEditMode = false;
-  display$!: Observable<boolean>;
   form!: FormGroup;
   result!: 'michalWins' | 'kasinWins' | 'void' | null;
 
@@ -30,7 +33,10 @@ export class BetEditorComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.display$ = this.betService.isEditorOpen$;
+    this.displaySubscription = this.betService.isEditorOpen$.subscribe((isEditorOpen) => {
+      this.display = isEditorOpen;
+    });
+
     this.betSubscription = this.betService.betInEditor$.subscribe((betInEditor) => {
       this.bet = betInEditor;
       this.isEditMode = !!this.bet;
@@ -109,6 +115,7 @@ export class BetEditorComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.betSubscription.unsubscribe();
+    this.displaySubscription.unsubscribe();
   }
 
   // Remove code and convert default string-type form control values to number-type

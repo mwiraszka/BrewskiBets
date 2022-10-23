@@ -16,8 +16,24 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  // not failing linting...
-  it('should intentionally fail ES linting', () => {
-    expect(component).toBeTruthy();
+  describe('Rendering', () => {
+    it('should render the component', () => {
+      expect(component).toBeTruthy();
+    });
+
+    it('<div class="app-title"> should contain the app title and logo', () => {
+      expect(getElement('div.app-title h1')?.textContent).toBe('Brewski Bets');
+      expect(getElement('div.app-title img')?.getAttribute('src')).toBe(
+        'assets/bb-logo.svg'
+      );
+    });
+
+    it('<h2> should contain reference to the tournament', () => {
+      expect(getElement('h2')?.textContent).toContain('FIFA World Cup Qatar 2022');
+    });
+
+    function getElement(selector: string): HTMLElement | null {
+      return fixture.debugElement.nativeElement.querySelector(selector);
+    }
   });
 });

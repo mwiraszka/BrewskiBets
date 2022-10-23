@@ -20,7 +20,30 @@ describe('BetEditorComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('Rendering', () => {
+    it('should render the component', () => {
+      expect(component).toBeTruthy();
+    });
+
+    it('<section> should render modal with a form within it when [display = true]', () => {
+      component.display = true;
+      fixture.detectChanges();
+
+      expect(getElement('section.open')).toBeTruthy();
+      expect(getElement('div.bet-editor-content')).toBeTruthy();
+      expect(getElement('button.close')).toBeTruthy();
+      expect(getElement('form')).toBeTruthy();
+    });
+
+    it('<section> should not render modal when [display = false]', () => {
+      component.display = false;
+      fixture.detectChanges();
+
+      expect(getElement('section')).toBeNull();
+    });
+
+    function getElement(selector: string): HTMLElement | null {
+      return fixture.debugElement.nativeElement.querySelector(selector);
+    }
   });
 });
