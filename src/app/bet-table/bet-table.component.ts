@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { BetService } from '../services/bet.service';
 import { Bet } from '../types/bet.model';
 import { BrewTotals } from '../types/brew-totals.model';
-import { customSort } from '../utils/custom-sort';
+import { customSort } from '../types/utils/custom-sort';
 
 @Component({
   selector: 'bb-bet-table',

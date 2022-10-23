@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -12,7 +13,12 @@ import { HeaderComponent } from './header/header.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FontAwesomeTestingModule, ReactiveFormsModule, RouterTestingModule],
+      imports: [
+        FontAwesomeTestingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        RouterTestingModule,
+      ],
       declarations: [
         AppComponent,
         BetTableComponent,
