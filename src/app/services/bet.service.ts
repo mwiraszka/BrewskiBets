@@ -21,6 +21,9 @@ export class BetService {
   _betInEditor = new BehaviorSubject<Bet | null>(null);
   betInEditor$ = this._betInEditor.asObservable();
 
+  _isLoading = new BehaviorSubject<boolean>(false);
+  isLoading$ = this._isLoading.asObservable();
+
   constructor(@Inject(DOCUMENT) private document: Document, private http: HttpClient) {}
 
   openEditor(bet?: Bet): void {
@@ -32,6 +35,10 @@ export class BetService {
   closeEditor(): void {
     this._isEditorOpen.next(false);
     this.document.body.classList.remove('editor-open');
+  }
+
+  setLoadingSpinner(isLoading: boolean): void {
+    this._isLoading.next(isLoading);
   }
 
   async getBets(): Promise<ApiResponse> {

@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 
@@ -9,7 +10,7 @@ describe('BetTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FontAwesomeTestingModule],
+      imports: [FontAwesomeTestingModule, HttpClientModule],
       declarations: [BetTableComponent],
     }).compileComponents();
 

@@ -23,7 +23,12 @@ export class BetTableComponent implements OnInit, OnDestroy {
   constructor(private betService: BetService) {}
 
   ngOnInit(): void {
-    this.betService.getBets().then((res) => {});
+    this.betService.setLoadingSpinner(true);
+
+    this.betService.getBets().then((res) => {
+      this.betService.setLoadingSpinner(false);
+    });
+
     this.betsSubscription = this.betService.bets$.subscribe((bets) => {
       this.bets = [...bets].sort(customSort('id', true));
       this.brewTotals = this.tallyBrewTotals(bets);

@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
@@ -11,7 +12,7 @@ describe('BetEditorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [BetEditorComponent],
-      imports: [FontAwesomeTestingModule, ReactiveFormsModule],
+      imports: [FontAwesomeTestingModule, HttpClientModule, ReactiveFormsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(BetEditorComponent);
