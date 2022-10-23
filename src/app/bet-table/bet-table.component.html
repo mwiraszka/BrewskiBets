@@ -1,7 +1,7 @@
 <table>
 	<thead>
 		<tr>
-			<th>
+			<th class="michal-header">
 				<div class="th-flex-container">
 					<span>Michal</span>
 					<img src="assets/mario.svg"
@@ -19,7 +19,7 @@
 					</button>
 				</div>
 			</th>
-			<th>
+			<th class="kasin-header">
 				<div class="th-flex-container">
 					<span>Kasin</span>
 					<img src="assets/bowser.svg"
@@ -31,7 +31,7 @@
 	<tbody>
 		<tr *ngFor="let bet of bets; let i = index"
 				(click)="openEditor(bet)">
-			<td>
+			<td class="michal-brews">
 				<fa-icon *ngFor="let brew of [].constructor(bet.brewsForMichal)"
 								 class="beer-icon"
 								 [class.won]="bet.result === 'michalWins'"
@@ -43,7 +43,7 @@
 					[class.done]="bet.result">
 				{{ bet.details }}
 			</td>
-			<td>
+			<td class="kasin-brews">
 				<fa-icon *ngFor="let brew of [].constructor(bet.brewsForKasin)"
 								 class="beer-icon"
 								 [class.won]="bet.result === 'kasinWins'"
@@ -57,10 +57,12 @@
 			<td>
 				<fa-icon *ngFor="let brew of [].constructor(brewTotals.michalWon)"
 								 class="beer-icon won"
+								 size="2xs"
 								 [icon]="faBeerMugEmpty">
 				</fa-icon>
 				<fa-icon *ngFor="let brew of [].constructor(brewTotals.michalPossible - brewTotals.michalWon)"
 								 class="beer-icon"
+								 size="2xs"
 								 [icon]="faBeerMugEmpty">
 				</fa-icon>
 			</td>
@@ -71,10 +73,12 @@
 			<td>
 				<fa-icon *ngFor="let brew of [].constructor(brewTotals.kasinWon)"
 								 class="beer-icon won"
+								 size="2xs"
 								 [icon]="faBeerMugEmpty">
 				</fa-icon>
 				<fa-icon *ngFor="let brew of [].constructor(brewTotals.kasinPossible - brewTotals.kasinWon)"
 								 class="beer-icon"
+								 size="2xs"
 								 [icon]="faBeerMugEmpty">
 				</fa-icon>
 			</td>

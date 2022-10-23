@@ -13,7 +13,6 @@
 table {
   max-width: 600px;
   box-shadow: 3px 2px 8px 0 hsla(0, 0%, 89%, 0.7);
-  border-radius: 4px;
   border-collapse: collapse;
 
   thead {
@@ -22,11 +21,15 @@ table {
     top: 0;
     font-size: 16px;
     border-bottom: 2px solid rgba(206, 205, 205, 0.7);
-  
+
     tr {
       background-color: hsl(97, 45%, 82%);
       white-space: nowrap;
-      border-radius: 4px;
+
+      th.michal-header,
+      th.kasin-header {
+        width: 100px;
+      }
 
       .th-flex-container {
         display: flex;
@@ -50,7 +53,7 @@ table {
           display: flex;
           justify-content: center;
           gap: 6px;
-          padding: 4px 16px;
+          padding: 12px 18px;
 
           &:hover {
             cursor: pointer;
@@ -67,7 +70,6 @@ table {
 
   tbody tr {
     background-color: hsl(0, 0%, 96%);
-    border-radius: 4px;
 
     &:nth-child(even) {
       background-color: hsl(0, 0%, 94%);
@@ -82,8 +84,8 @@ table {
       padding: 6px;
 
       &.bet-details {
-        min-width: 120px;
-        max-width: 160px;
+        min-width: 80px;
+        max-width: 300px;
         font-size: 12px;
         white-space: pre-wrap;
         overflow-wrap: break-word;  
@@ -112,6 +114,11 @@ table {
           font-style: normal !important;
           color: rgba(198, 52, 52, 0.4) !important;
         }
+      }
+
+      &.michal-brews,
+      &.kasin-brews {
+        max-width: 80px;
       }
     }
   }
