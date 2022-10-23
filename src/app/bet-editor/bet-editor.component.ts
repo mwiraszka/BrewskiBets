@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faClose, faBeerMugEmpty } from '@fortawesome/free-solid-svg-icons';
+import { HotToastService } from '@ngneat/hot-toast';
 import { Observable, Subscription } from 'rxjs';
 
 import { BetService } from '../services/bet.service';
@@ -22,7 +23,11 @@ export class BetEditorComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   result!: 'michalWins' | 'kasinWins' | 'void' | null;
 
-  constructor(private betService: BetService, private formBuilder: FormBuilder) {}
+  constructor(
+    private betService: BetService,
+    private formBuilder: FormBuilder,
+    private hotToastService: HotToastService
+  ) {}
 
   ngOnInit(): void {
     this.display$ = this.betService.isEditorOpen$;
@@ -62,29 +67,44 @@ export class BetEditorComponent implements OnInit, OnDestroy {
 
   onDelete(): void {
     this.betService.setLoadingSpinner(true);
-    const [newBet, code] = this.handleBetData(this.form.value);
+    const [newBet, code] = this.handleBetData();
 
     this.betService.deleteBet(newBet, code).then((res) => {
       this.betService.setLoadingSpinner(false);
+      if (res.error) {
+        this.hotToastService.error(res.error.message);
+      } else {
+        this.hotToastService.success('Successfully deleted bet');
+        this.betService.closeEditor();
+      }
     });
-    this.betService.closeEditor();
   }
 
   onSubmit(): void {
     this.betService.setLoadingSpinner(true);
-    const [newBet, code] = this.handleBetData(this.form.value);
+    const [newBet, code] = this.handleBetData();
 
     if (this.isEditMode) {
       this.betService.updateBet(newBet, code).then((res) => {
         this.betService.setLoadingSpinner(false);
+        if (res.error) {
+          this.hotToastService.error(res.error.message);
+        } else {
+          this.hotToastService.success('Successfully updated bet');
+          this.betService.closeEditor();
+        }
       });
     } else {
       this.betService.addBet(newBet, code).then((res) => {
         this.betService.setLoadingSpinner(false);
+        if (res.error) {
+          this.hotToastService.error(res.error.message);
+        } else {
+          this.hotToastService.success('Successfully added bet');
+          this.betService.closeEditor();
+        }
       });
     }
-
-    this.betService.closeEditor();
   }
 
   ngOnDestroy(): void {
@@ -92,7 +112,7 @@ export class BetEditorComponent implements OnInit, OnDestroy {
   }
 
   // Remove code and convert default string-type form control values to number-type
-  private handleBetData(formData: any): [Bet, string] {
+  private handleBetData(): [Bet, string] {
     const bet: Bet = {
       id: this.form.controls['id'].value,
       details: this.form.controls['details'].value,

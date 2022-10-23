@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 import { AppComponent } from './app.component';
 import { BetEditorComponent } from './bet-editor/bet-editor.component';
@@ -18,7 +19,13 @@ import { HeaderComponent } from './header/header.component';
     FooterComponent,
     HeaderComponent,
   ],
-  imports: [BrowserModule, FontAwesomeModule, HttpClientModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    FontAwesomeModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    HotToastModule.forRoot(),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
