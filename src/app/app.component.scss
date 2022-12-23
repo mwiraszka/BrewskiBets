@@ -19,3 +19,13 @@ bb-footer {
   width: 100%;
   background-color: hsl(97, 35%, 88%);
 }
+
+.notice {
+  padding: 1em 2.2em;
+  border: 1px solid transparentize(gray, 0.5);
+  border-radius: 8px;
+  color: rgb(30,30,30);
+  display: inline-block;
+  margin: 30px 8px;
+  max-width: 500px;
+}
