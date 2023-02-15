@@ -11,6 +11,28 @@ Brewski Bets is the official platform for betting brewskis on the FIFA World Cup
 <h2>Releases</h2>
 
 <details>
+<summary style="cursor: pointer">v1.1.2</summary>
+
+**Released on February 14th, 2023**
+
+<h4 style="color: red">Bug Fixes</h4>
+
+- [Core] Upgrade `loader-utils` library to remove vulnerability picked up by GitHub's Dependabot
+
+</details>
+
+<details>
+<summary style="cursor: pointer">v1.1.1</summary>
+
+**Released on December 24th, 2022**
+
+<h4 style="color: red">Bug Fixes</h4>
+
+- [Frontend] Just for demo purposes
+
+</details>
+
+<details>
 <summary style="cursor: pointer">v1.1.0</summary>
 
 **Released on December 23rd, 2022**
